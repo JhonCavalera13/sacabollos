@@ -1,0 +1,32 @@
+<nav>
+  <div class="container">
+    <a [routerLink]="['/inicio']" id="logo">NEI Sacabollos & detail</a>
+    <ul>
+      <li><a [routerLink]="['/inicio']" [routerLinkActive]="['actived']">Inicio</a></li>
+      <li><a [routerLink]="['/tablero-clientes']" [routerLinkActive]="['actived']">Consulta</a></li>
+      <li><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li>
+      <li *ngIf="isLoggedIn" ><a><i class="fas fa-user"></i> Bienvenido</a>
+        <ul>
+          <li>
+            <a [routerLink]="['/configuracion']"><i class="fas fa-cog"></i> Configuración</a>
+          </li>
+          <li *ngIf="isLoggedIn">
+            <a style="cursor: pointer" class="text-white" (click)="logout()">
+              <i class="fas fa-user-times"></i> Cerrar Sesión
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li *ngIf="!isLoggedIn" >
+        <a [routerLink]="['/login']" [routerLinkActive]="['actived']">
+          <i class="fas fa-user"></i> Iniciar Sesión
+        </a>
+      </li>
+      <li *ngIf="!isLoggedIn">
+          <a [routerLink]="['/registro']" [routerLinkActive]="['actived']">
+            <i class="fas fa-user"></i> Registrarse
+          </a>
+        </li>
+    </ul>
+  </div>
+</nav>

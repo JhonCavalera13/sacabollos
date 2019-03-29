@@ -1,1 +1,276 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+/*** HEADER/ NAV ***/
+
+nav {
+  width: 100%;
+  height: 50px;
+  background: black;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  float: right;
+}
+
+nav ul li {
+  list-style: none;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  color: #fff;
+  padding: 0 20px;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 50px;
+  transition: 0.7s;
+}
+
+nav ul li a:hover,
+.actived {
+  background: red;
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li i {
+  color: #fff;
+}
+
+nav ul li ul {
+  background: #000;
+  display: block;
+  transition: 0.6s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+nav ul li:hover ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+nav ul li ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+nav #logo {
+  color: white;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+nav #logo:hover {
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*** Responsive ***/
+@media (max-width:768px) {
+  nav {
+    position: relative;
+    margin-bottom: 255px;
+  }
+
+  nav ul {
+    display: block;
+    width: 100%;
+    background: #000;
+  }
+
+  nav ul li {
+    display: block;
+  }
+
+  nav ul li ul {
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+/*** Sections ***/
+section {
+  width: 100%;
+  height: 100vh;
+  display: block;
+}
+
+section.sec1 {
+
+  background: url('./assets/img/gei.png');
+  background-size: cover;
+}
+
+section.sec2 {
+  padding: 70px;
+  box-sizing: border-box;
+  height: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+section.sec2 h4 {
+  margin: 0;
+  padding: 0 0 20px;
+}
+
+section.sec3 {
+  height: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+section.sec4 {
+  padding: 70px;
+  height: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+/*** Estilos iconos font awesome ***/
+a .fab {
+  color: #ccc;
+  font-size: 30px;
+}
+
+a .fab:hover {
+  color: #1abc9c;
+}
+
+/*** Footer ***/
+footer {
+  background: black;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+
+}
+
+/*** Tablero/ header ***/
+#main-header {
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #434343, #000000);
+}
+
+#actions a{
+  list-style: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*** Login ***/
+.section-login{
+  background: url('./assets/img/bg2.jpg') no-repeat;
+  background-size: cover; 
+}
+
+.login-box{
+  width: 35%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: white; 
+  background: rgba(26, 24, 24, 0.8);
+}
+
+.login-box h1{
+  text-align: center;
+  font-size: 40px;
+  border-bottom: 5px solid #e63a3a;
+  margin-bottom: 50px;
+  padding: 13px 0px;
+}
+
+.textbox{
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  margin: 8px 0;
+  border-bottom: 1px solid #e63a3a;
+}
+
+.textbox i{
+  width: 25px;
+  float: left;
+  text-align: center;
+}
+
+.textbox input{
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+  font-size: 18px;
+  width: 80%;
+  float: left;
+  margin: 0 10px;
+}
+
+#btn{
+  background: none;
+  color: white;
+  border: 2px solid #e63a3a;
+  padding: 5px; 
+  cursor: pointer;
+  margin: 22px 0;
+  transition: 0.8s;
+  border-radius: 30px; 
+}
+
+#btn:hover{
+  background: #e63a3a;
+  color: white;
+
+}
+
+/**** CONTACTO ****/
+#contacto h2{
+  color: white;
+  border-bottom: 3px solid #e63a3a;
+  width: 16%;
+  padding-bottom: 7px;
+}
+
+#contacto-border{
+  border-right: 1px solid #e63a3a; 
+  height: 55%;
+}
+
+/*** Registro ****/
+.section-registro{
+  background: url('./assets/img/bg3.jpg') no-repeat;
+  background-size: 100%; 
+}
+
+/*** Configuracion ***/
+#btn-conf{
+  background: #e63a3a;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 6px;
+  transition: 0.7s;
+}
+
+#btn-conf:hover{
+  border: 1px solid #e63a3a;
+  background: none;
+}
+
+/*** GOOGLE MAPS ***/
+agm-map{
+  width: 100%;
+  height: 300px;
+}

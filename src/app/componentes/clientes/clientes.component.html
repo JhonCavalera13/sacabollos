@@ -1,0 +1,175 @@
+<!-- Formulario para clientes -->
+<section *ngIf="!isLoggedIn" class="py-5" id="form-clientes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Deja tu consulta!</h4>
+          </div>
+          <div class="card-body">
+            <flash-messages></flash-messages>
+
+            <form #clienteForm="ngForm" (ngSubmit)="agregar(clienteForm)">
+                <div class="form-group">
+                  <label for="consulta">Consulta</label>
+                  <textarea name="consulta" 
+                            class="form-control" 
+                            placeholder="Deje su consulta o reserve su turno aquí!"
+                            rows="4" 
+                            #consulta="ngModel" 
+                            [(ngModel)]="cliente.consulta" 
+                            [ngClass]="{'is-invalid': consulta.errors && consulta.touched}"
+                            required 
+                            minlength="5"
+                  ></textarea>
+
+                  <div [hidden]="!consulta.errors?.required" class="invalid-feedback">
+                    Consulta requerida
+                  </div>
+                  <div [hidden]="!consulta.errors?.minlength" class="invalid-feedback">
+                    Debe contener al menos 5 caracteres
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="nombre">Nombre</label>
+                  <input 
+                      type="text" 
+                      name="nombre" 
+                      class="form-control"
+                      #nombre="ngModel"
+                      [(ngModel)]="cliente.nombre"
+                      [ngClass]="{'is-invalid': nombre.errors && nombre.touched}"
+                      required
+                      minlength="2"
+                  >
+                  <div [hidden]="!nombre.errors?.required" class="invalid-feedback">
+                    Nombre requerido
+                  </div>
+                  <div [hidden]="!nombre.errors?.minlength" class="invalid-feedback">
+                    Debe tener al menos 2 carateres
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="apellido">Apellido</label>
+                  <input 
+                      type="text" 
+                      name="apellido" 
+                      class="form-control"
+                      #apellido="ngModel"
+                      [(ngModel)]="cliente.apellido"
+                      [ngClass]="{'is-invalid': apellido.errors && apellido.touched}"
+                      required
+                      minlength="2"
+                  >
+
+                  <div [hidden]="!apellido.errors?.required" class="invalid-feedback">
+                    Apellido requerido
+                  </div>
+                  <div [hidden]="!apellido.errors?.minlength" class="invalid-feedback">
+                    Debe tener al menos 2 carateres
+                  </div>
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input 
+                    type="email" 
+                    name="email" 
+                    class="form-control"
+                    #email="ngModel"
+                    [(ngModel)]="cliente.email"
+                    [ngClass]="{'is-invalid': email.errors && email.touched}"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?w+)*(\.\w{2,3})+$"
+                    required
+                    >
+
+                    <div [hidden]="!email.errors?.required" class="invalid-feedback">
+                      Email requerido
+                    </div>
+                    <div [hidden]="!email.errors?.pattern" class="invalid-feedback">
+                      El email no es vàlido
+                    </div>
+  
+                </div>
+
+                <div class="form-group">
+                  <label for="telefono">Numero Telefonico</label>
+                  <input 
+                      type="number" 
+                      name="telefono" 
+                      class="form-control"
+                      #telefono="ngModel"
+                      [(ngModel)]="cliente.telefono"
+                      [ngClass]="{'is-invalid': telefono.errors && telefono.touched}"
+                      required
+                  >
+
+                  <div [hidden]="!telefono.errors?.required" class="invalid-feedback">
+                    Nùmero telefonico requerido
+                  </div>
+                </div>
+
+              <button type="submit" class="btn btn-primary">Guardar</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="isLoggedIn" class="pt-5">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h4>Listado de clientes</h4>
+          </div>
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Numero Telefonico</th>
+                <th>Email</th>
+                <th>Consulta</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cliente of clientes; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{cliente.nombre}} {{cliente.apellido}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td>{{cliente.email}}</td>
+                <td>{{cliente.consulta}}</td>
+                <td>
+                  <a routerLink="/cliente/editar/{{cliente.id}}" class="btn btn-secondary">
+                    <i class="fas fa-angle-double-right"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--Tarjetas laterales -->
+      <div class="col-md-3">
+        <div class="card text-center bg-success text-white mb-3">
+          <div class="card-body">
+            <h3>Total Clientes</h3>
+            <h4 class="display-4">
+              <i class="fas fa-users"></i> {{clientes?.length}}
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

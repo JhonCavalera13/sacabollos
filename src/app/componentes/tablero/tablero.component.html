@@ -1,0 +1,17 @@
+<header *ngIf="isLoggedIn" id="main-header" class="py-2 text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h1>
+          <i class="fas fa-cog"></i> Control de Clientes
+        </h1>
+        <div id="actions" class="py-2 mb-4">
+          <a [routerLink]="['/inicio']"><i class="fas fa-arrow-left"></i> Regresar al inicio</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<app-clientes></app-clientes>

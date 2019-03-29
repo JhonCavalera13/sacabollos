@@ -1,0 +1,19 @@
+<flash-messages></flash-messages>
+<section class="section-login">
+  <div class="login-box container">
+    <h1>Iniciar sesión</h1>
+    <form (submit)="login()">
+        <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input type="email" name="email" [(ngModel)]="email" placeholder="Email" required autofocus>
+          </div>
+      
+          <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Contraseña" name="password"  [(ngModel)]="password" required>
+          </div>
+      
+          <input type="submit" id="btn" class="btn btn-block" value="Entrar">
+    </form>
+</div>
+</section>
